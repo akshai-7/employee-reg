@@ -1,60 +1,168 @@
 @extends('layouts.app')
 @section('content')
-    <style>
-        .form-control {
-            border: none;
-        }
-    </style>
-    <section>
-        <div class="mt-5" style="margin-left:30px">
-            <h4> Edit Employee detailes</h4>
-            <form action="/update/{id}" method="Post">
-                @csrf
-                <table class="table table-bordered mt-5" style="border: 1px solid lightgrey;width:1350px;">
-                    <thead style="font-size: 17px;font-weight:600;">
-                        <th style="text-align:center;">Employee Id</th>
-                        <th style="text-align:center;">First Name</th>
-                        <th style="text-align:center;">Last Name</th>
-                        <th style="text-align:center;">FatherName</th>
-                        <th style="text-align:center;">Email</th>
-                        <th style="text-align:center;">Address</th>
-                        <th style="text-align:center;">Mobile</th>
-                        <th style="text-align:center;">Description</th>
-                        <th style="text-align:center;">Action</th>
-                    </thead>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <form action="/update/{id}" method="Post">
+                    @csrf
                     @foreach ($edit as $edits)
-                        <tr>
-                            <td style="text-align:center;"><input type="text" readonly class="form-control"
-                                    name="id" value="{{ $edits->id }}">
-                            </td>
-                            <td style="text-align:center;"><input type="text" class="form-control" name="firstname"
-                                    value="{{ $edits->firstname }}" required>
-                            </td>
-                            <td style="text-align:center;"><input type="text" class="form-control" name="lastname"
-                                    value="{{ $edits->lastname }}" required>
-                            </td>
-                            <td style="text-align:center;"><input type="text" class="form-control" name="fathername"
-                                    value="{{ $edits->fathername }}" required>
-                            </td>
-                            <td style="text-align:center;"><input type="text" class="form-control" name="email"
-                                    value="{{ $edits->email }}" required>
-                            </td>
-                            <td style="text-align:center;"><input type="text" class="form-control" name="address"
-                                    value="{{ $edits->address }}" required>
-                            </td>
-                            <td style="text-align:center;"><input type="text" class="form-control" name="mobile"
-                                    value="{{ $edits->mobile }}" required>
-                            </td>
-                            <td style="text-align:center;"><input type="text" class="form-control" name="description"
-                                    value="{{ $edits->description }}" required>
-                            </td>
-                            <td style="text-align:center;">
-                                <button type="submit">Submit</button>
-                            </td>
-                        </tr>
+                        <div class="card">
+                            <div class="card-header">{{ __('Edit Employee Details ') }}</div>
+
+                            <div class="card-body">
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <input id="id" type="hidden"
+                                                class="form-control @error('id') is-invalid @enderror" name="id"
+                                                value="{{ $edits->id }}" autocomplete="firstname" autofocus>
+
+                                            @error('firstname')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="firstname"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="firstname" type="text"
+                                                class="form-control @error('firstname') is-invalid @enderror"
+                                                name="firstname" value="{{ $edits->firstname }}" required
+                                                autocomplete="firstname" autofocus>
+
+                                            @error('firstname')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="name"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="lastname" type="text"
+                                                class="form-control @error('lastname') is-invalid @enderror" name="lastname"
+                                                value="{{ $edits->lastname }}" required autocomplete="lastname" autofocus>
+
+                                            @error('lastname')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="name"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Father Name') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="fathername" type="text"
+                                                class="form-control @error('fathername') is-invalid @enderror"
+                                                name="fathername" value="{{ $edits->fathername }}" required
+                                                autocomplete="fathername" autofocus>
+
+                                            @error('fathername')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="email"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ $edits->email }}" required autocomplete="email">
+
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="address"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="address" type="text"
+                                                class="form-control @error('address') is-invalid @enderror" name="address"
+                                                value="{{ $edits->address }}" required autocomplete="address">
+
+                                            @error('address')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="mobile"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Mobile') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="mobile" type="text"
+                                                class="form-control @error('mobile') is-invalid @enderror" name="mobile"
+                                                value="{{ $edits->mobile }}" required autocomplete="mobile">
+
+                                            @error('mobile')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="description"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="description" type="text"
+                                                class="form-control @error('description') is-invalid @enderror"
+                                                name="description" value="{{ $edits->description }}" required
+                                                autocomplete="description">
+
+                                            @error('description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row mb-0">
+                                        <div class="col-md-6 offset-md-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ __('Update') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     @endforeach
-                </table>
-            </form>
+
+                </form>
+
+            </div>
         </div>
-    </section>
+    </div>
 @endsection

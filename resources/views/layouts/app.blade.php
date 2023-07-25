@@ -65,6 +65,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/user">
+                                        {{ __('User') }}
+                                    </a>
                                     <a class="dropdown-item" href="/">
                                         {{ __('Logout') }}
                                     </a>
