@@ -10,8 +10,8 @@ class UserController extends Controller
 {
     public function userlist()
     {
-        $user = User::all();
-        return view('/user', compact('user'));
+        $users = User::paginate(1);
+        return view('/user', compact('users'));
     }
 
     public function edituser($id)
@@ -46,13 +46,13 @@ class UserController extends Controller
 
         $query = $request['query'];
         if ($request['query'] == null) {
-            $user = User::get();
+            $users = User::get();
         } elseif ($request['query'] != null) {
-            $user = User::where('firstname', 'LIKE', "%$query%")
+            $users = User::where('firstname', 'LIKE', "%$query%")
                 ->orWhere('email', 'LIKE', "%$query%")
                 ->orWhere('mobile', 'LIKE', "%$query%")
                 ->get();
         }
-        return view('/user', ['user' => $user]);
+        return view('/user', ['users' => $users]);
     }
 }
