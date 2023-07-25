@@ -8,8 +8,8 @@
         }
 
         #filterDiv1 {
-            width: 60%;
-            margin-left: 570px;
+            width: 30%;
+            margin-left: 870px;
             padding: 10px 5px;
             display: flex;
             align-content: center;
