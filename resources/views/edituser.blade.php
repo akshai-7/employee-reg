@@ -28,25 +28,25 @@
                                     name="id" value="{{ $edits->id }}">
                             </td>
                             <td style="text-align:center;"><input type="text" class="form-control" name="firstname"
-                                    value="{{ $edits->firstname }}">
+                                    value="{{ $edits->firstname }}" required>
                             </td>
                             <td style="text-align:center;"><input type="text" class="form-control" name="lastname"
-                                    value="{{ $edits->lastname }}">
+                                    value="{{ $edits->lastname }}" required>
                             </td>
                             <td style="text-align:center;"><input type="text" class="form-control" name="fathername"
-                                    value="{{ $edits->fathername }}">
+                                    value="{{ $edits->fathername }}" required>
                             </td>
                             <td style="text-align:center;"><input type="text" class="form-control" name="email"
-                                    value="{{ $edits->email }}">
+                                    value="{{ $edits->email }}" required>
                             </td>
                             <td style="text-align:center;"><input type="text" class="form-control" name="address"
-                                    value="{{ $edits->address }}">
+                                    value="{{ $edits->address }}" required>
                             </td>
                             <td style="text-align:center;"><input type="text" class="form-control" name="mobile"
-                                    value="{{ $edits->mobile }}">
+                                    value="{{ $edits->mobile }}" required>
                             </td>
                             <td style="text-align:center;"><input type="text" class="form-control" name="description"
-                                    value="{{ $edits->description }}">
+                                    value="{{ $edits->description }}" required>
                             </td>
                             <td style="text-align:center;">
                                 <button type="submit">Submit</button>
