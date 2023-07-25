@@ -1,0 +1,55 @@
+@extends('layouts.app')
+@section('content')
+    <section>
+        <div class="mt-5" style="margin-left:100px">
+            <h4> Employee detailes</h4>
+            <form action="/update/{id}" method="Post">
+                @csrf
+                <table class="table table-bordered mt-2" style="border: 1px solid lightgrey;width:1200px;margin-left:50px">
+                    <thead>
+                        <th style="text-align:center;">Employee Id</th>
+                        <th style="text-align:center;">First Name</th>
+                        <th style="text-align:center;">Last Name</th>
+                        <th style="text-align:center;">FatherName</th>
+                        <th style="text-align:center;">Email</th>
+                        <th style="text-align:center;">Address</th>
+                        <th style="text-align:center;">Mobile</th>
+                        <th style="text-align:center;">Description</th>
+                        <th style="text-align:center;">Action</th>
+                    </thead>
+                    @foreach ($edit as $edits)
+                        <tr>
+                            <td style="text-align:center;" class="table_data"><input type="text" readonly
+                                    class="form-control" name="id" value="{{ $edits->id }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
+                                    name="firstname" value="{{ $edits->firstname }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
+                                    name="lastname" value="{{ $edits->lastname }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
+                                    name="fathername" value="{{ $edits->fathername }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
+                                    name="email" value="{{ $edits->email }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
+                                    name="address" value="{{ $edits->address }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
+                                    name="mobile" value="{{ $edits->mobile }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
+                                    name="description" value="{{ $edits->description }}">
+                            </td>
+                            <td style="text-align:center;" class="table_data">
+                                <button type="submit">Submit</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </form>
+        </div>
+    </section>
+@endsection
