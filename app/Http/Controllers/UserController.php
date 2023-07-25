@@ -31,6 +31,7 @@ class UserController extends Controller
         $update->mobile = $request['mobile'];
         $update->description = $request['description'];
         $update->save();
+        session()->flash('message', ' Updated Successfully');
         return redirect('/user');
     }
 
@@ -38,6 +39,7 @@ class UserController extends Controller
     {
         $remove = User::find($id);
         $remove->delete();
+        session()->flash('message1', '  Employee Deleted');
         return redirect('/user');
     }
 

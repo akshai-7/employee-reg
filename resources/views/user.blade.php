@@ -9,7 +9,7 @@
 
         #filterDiv1 {
             width: 60%;
-            margin-left: 350px;
+            margin-left: 570px;
             padding: 10px 5px;
             display: flex;
             align-content: center;
@@ -17,12 +17,14 @@
         }
 
         #title {
-            color: black;
+            color: white;
+            background-color: #f2678a
         }
 
         #title1 {
-            color: #bf0e3a;
+            color: black;
             margin-left: 50px;
+            font-weight: bold;
 
         }
 
@@ -40,12 +42,54 @@
         #active {
             margin-left: 1100px;
             color: #bf0e3a;
+            margin-top: 50px;
+        }
+
+        #add {
+            background: #bf0e3a;
+            border-radius: 2px;
+            border: 1px solid rgb(148, 35, 35);
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            top: -35px;
+            height: 30px;
+            position: relative;
+            width: 100px;
+            margin-left: 1150px;
+        }
+
+        #message {
+            position: fixed;
+            top: 70px;
+            right: 10px;
+            animation-duration: 1s;
+            z-index: 1;
         }
     </Style>
     <section id="section">
-        <div class="mt-5" style="margin-left:100px">
+        <div class="mt-4" style="margin-left:100px">
+            <div class="message" id="message">
+                @if (session()->has('message'))
+                    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show" style="width: 300px;height:20px">
+                        <div div class="alert alert-success">
+                            <i class="fa-regular fa-circle-check"></i> {{ session('message') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <div class="message1" id="message">
+                @if (session()->has('message1'))
+                    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show" style="width: 300px;height:20px;">
+                        <div class="alert alert-danger">
+                            <i class="fa-regular fa-circle-x"></i>{{ session('message1') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
             <h4 id="title1"> Employee detailes</h4>
-            <form action="/usersearch" method="GET" style="margin-left:32%" autocomplete="off">
+            <a href="/register"><input type="submit" value="Add Employee" id="add"></a>
+            <form action="/usersearch" method="GET" autocomplete="off">
                 <div id="filterDiv1">
                     <div class="col-md-9">
                         <label></label>
@@ -64,9 +108,9 @@
                     </div>
                 </div>
             </form>
-            <table class="table table-bordered table-striped mt-3"
+            <table class="table table-bordered table-striped mt-1"
                 style="border: 1px solid lightgrey;width:1200px;margin-left:50px" id="myTable">
-                <thead style="font-size: 17px;font-weight:600;">
+                <thead style="font-size: 17px;font-weight:600;" id="thead">
                     <th style="text-align:center;" id="title">S.no</th>
                     <th style="text-align:center;" id="title">Employee Id</th>
                     <th style="text-align:center;" id="title">Employee Name</th>

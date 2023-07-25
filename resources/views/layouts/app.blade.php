@@ -21,11 +21,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
+
 </head>
 
-<body>
+<body style="background-color: #f7d3dc">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color: #f7d3dc">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('Employee', 'Employee') }}
@@ -65,12 +68,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/user">
-                                        {{ __('User') }}
-                                    </a>
-                                    <a class="dropdown-item" href="/register">
-                                        {{ __('Register') }}
-                                    </a>
                                     <a class="dropdown-item" href="/">
                                         {{ __('Logout') }}
                                     </a>
