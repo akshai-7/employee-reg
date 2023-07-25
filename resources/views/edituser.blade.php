@@ -1,12 +1,17 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .form-control {
+            border: none;
+        }
+    </style>
     <section>
-        <div class="mt-5" style="margin-left:100px">
-            <h4> Employee detailes</h4>
+        <div class="mt-5" style="margin-left:30px">
+            <h4> Edit Employee detailes</h4>
             <form action="/update/{id}" method="Post">
                 @csrf
-                <table class="table table-bordered mt-2" style="border: 1px solid lightgrey;width:1200px;margin-left:50px">
-                    <thead>
+                <table class="table table-bordered mt-5" style="border: 1px solid lightgrey;width:1350px;">
+                    <thead style="font-size: 17px;font-weight:600;">
                         <th style="text-align:center;">Employee Id</th>
                         <th style="text-align:center;">First Name</th>
                         <th style="text-align:center;">Last Name</th>
@@ -19,31 +24,31 @@
                     </thead>
                     @foreach ($edit as $edits)
                         <tr>
-                            <td style="text-align:center;" class="table_data"><input type="text" readonly
-                                    class="form-control" name="id" value="{{ $edits->id }}">
+                            <td style="text-align:center;"><input type="text" readonly class="form-control"
+                                    name="id" value="{{ $edits->id }}">
                             </td>
-                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
-                                    name="firstname" value="{{ $edits->firstname }}">
+                            <td style="text-align:center;"><input type="text" class="form-control" name="firstname"
+                                    value="{{ $edits->firstname }}">
                             </td>
-                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
-                                    name="lastname" value="{{ $edits->lastname }}">
+                            <td style="text-align:center;"><input type="text" class="form-control" name="lastname"
+                                    value="{{ $edits->lastname }}">
                             </td>
-                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
-                                    name="fathername" value="{{ $edits->fathername }}">
+                            <td style="text-align:center;"><input type="text" class="form-control" name="fathername"
+                                    value="{{ $edits->fathername }}">
                             </td>
-                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
-                                    name="email" value="{{ $edits->email }}">
+                            <td style="text-align:center;"><input type="text" class="form-control" name="email"
+                                    value="{{ $edits->email }}">
                             </td>
-                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
-                                    name="address" value="{{ $edits->address }}">
+                            <td style="text-align:center;"><input type="text" class="form-control" name="address"
+                                    value="{{ $edits->address }}">
                             </td>
-                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
-                                    name="mobile" value="{{ $edits->mobile }}">
+                            <td style="text-align:center;"><input type="text" class="form-control" name="mobile"
+                                    value="{{ $edits->mobile }}">
                             </td>
-                            <td style="text-align:center;" class="table_data"><input type="text" class="form-control"
-                                    name="description" value="{{ $edits->description }}">
+                            <td style="text-align:center;"><input type="text" class="form-control" name="description"
+                                    value="{{ $edits->description }}">
                             </td>
-                            <td style="text-align:center;" class="table_data">
+                            <td style="text-align:center;">
                                 <button type="submit">Submit</button>
                             </td>
                         </tr>

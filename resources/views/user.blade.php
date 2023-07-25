@@ -3,8 +3,8 @@
     <section>
         <div class="mt-5" style="margin-left:100px">
             <h4> Employee detailes</h4>
-            <table class="table table-bordered mt-2" style="border: 1px solid lightgrey;width:1200px;margin-left:50px">
-                <thead>
+            <table class="table table-bordered mt-5" style="border: 1px solid lightgrey;width:1200px;margin-left:50px">
+                <thead style="font-size: 17px;font-weight:600;">
                     <th style="text-align:center;">Employee Id</th>
                     <th style="text-align:center;">Employee Name</th>
                     <th style="text-align:center;">FatherName</th>
