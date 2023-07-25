@@ -3,7 +3,27 @@
     <section>
         <div class="mt-5" style="margin-left:100px">
             <h4> Employee detailes</h4>
-            <table class="table table-bordered mt-5" style="border: 1px solid lightgrey;width:1200px;margin-left:50px">
+            <form action="/usersearch" method="GET" style="margin-left:32%" autocomplete="off">
+                <div id="filterDiv1">
+                    <div class="col-md-9">
+                        <label></label>
+                        @if (isset($_GET['query']))
+                            <input type="text" name="query" placeholder="Name/Email/Mobile" class="form-control"
+                                value="{{ $_GET['query'] }}" required>
+                        @else
+                            <input type="text" name="query" placeholder="Name/Email/Mobile" class="form-control">
+                        @endif
+                    </div>
+                    <div class="col-md-5" style="margin-left: 6px">
+                        <br />
+                        <button type="submit" class="btn btn-primary btn-sm mt-1"><i
+                                class="fa-solid fa-magnifying-glass"></i></i></button>
+                        <a href="/user" class="btn btn-success btn-sm mt-1"><i class="fa-solid fa fa-refresh"></i></a>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-bordered mt-5" style="border: 1px solid lightgrey;width:1200px;margin-left:50px"
+                id="myTable">
                 <thead style="font-size: 17px;font-weight:600;">
                     <th style="text-align:center;">Employee Id</th>
                     <th style="text-align:center;">Employee Name</th>

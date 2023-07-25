@@ -27,3 +27,4 @@ Route::get('/user', [UserController::class, 'userlist']);
 Route::get('/edituser/{id}', [UserController::class, 'edituser']);
 Route::post('/update/{id}', [UserController::class, 'update']);
 Route::get('/remove/{id}', [UserController::class, 'remove']);
+Route::get('/usersearch', [UserController::class, 'usersearch']);
