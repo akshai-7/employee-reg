@@ -39,6 +39,7 @@
 
         #active {
             margin-left: 1100px;
+            color: #bf0e3a;
         }
     </Style>
     <section id="section">
@@ -63,9 +64,10 @@
                     </div>
                 </div>
             </form>
-            <table class="table table-bordered mt-3" style="border: 1px solid lightgrey;width:1200px;margin-left:50px"
-                id="myTable">
+            <table class="table table-bordered table-striped mt-3"
+                style="border: 1px solid lightgrey;width:1200px;margin-left:50px" id="myTable">
                 <thead style="font-size: 17px;font-weight:600;">
+                    <th style="text-align:center;" id="title">S.no</th>
                     <th style="text-align:center;" id="title">Employee Id</th>
                     <th style="text-align:center;" id="title">Employee Name</th>
                     <th style="text-align:center;" id="title">FatherName</th>
@@ -77,6 +79,8 @@
                 </thead>
                 @foreach ($users as $user)
                     <tr>
+                        <td style="text-align:center;" class="table_data">{{ $loop->iteration }}
+                        </td>
                         <td style="text-align:center;" class="table_data">EMP-00{{ $user->id }}
                         </td>
                         <td style="text-align:center;" class="table_data">{{ $user->firstname }}.{{ $user->lastname }}
