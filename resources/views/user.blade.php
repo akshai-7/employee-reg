@@ -50,12 +50,12 @@
             border-radius: 2px;
             border: 1px solid rgb(148, 35, 35);
             color: #fff;
-            font-size: 13px;
+            font-size: 15px;
             cursor: pointer;
             top: -35px;
             height: 30px;
             position: relative;
-            width: 100px;
+            width: 120px;
             margin-left: 1150px;
         }
 

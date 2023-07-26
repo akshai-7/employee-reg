@@ -26,9 +26,9 @@
 
 </head>
 
-<body style="background-color: #f7d3dc">
+<body style="background-color: #e8dcdf">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color: #f7d3dc">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color: #f3bbc9">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('Employee', 'Employee') }}
