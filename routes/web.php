@@ -18,13 +18,15 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
-Route::view('/', 'login')->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::view('/', 'login');
+Route::post('/store', [LoginController::class, 'store']);
 Route::view('/register', 'register')->name('register');
-Route::post('/', [RegisterController::class, 'register']);
-Route::view('/user', 'user')->name('user');
-Route::get('/user', [UserController::class, 'userlist']);
-Route::get('/edituser/{id}', [UserController::class, 'edituser']);
-Route::post('/update/{id}', [UserController::class, 'update']);
-Route::get('/remove/{id}', [UserController::class, 'remove']);
-Route::get('/usersearch', [UserController::class, 'usersearch']);
+Route::post('/register', [RegisterController::class, 'register']);
+Route::group(['middleware' => 'customeauth'], function () {
+    Route::view('/user', 'user')->name('user');
+    Route::get('/user', [UserController::class, 'userlist']);
+    Route::get('/edituser/{id}', [UserController::class, 'edituser']);
+    Route::post('/update/{id}', [UserController::class, 'update']);
+    Route::get('/remove/{id}', [UserController::class, 'remove']);
+    Route::get('/usersearch', [UserController::class, 'usersearch']);
+});

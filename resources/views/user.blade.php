@@ -9,7 +9,7 @@
 
         #filterDiv1 {
             width: 30%;
-            margin-left: 870px;
+            margin-left: 780px;
             padding: 10px 5px;
             display: flex;
             align-content: center;
@@ -18,14 +18,14 @@
 
         #title {
             color: white;
-            background-color: #f2678a
+            background-color: #f06487;
         }
 
         #title1 {
             color: black;
-            margin-left: 50px;
+            margin-left: -70px;
             font-weight: bold;
-
+            margin-top: 50px;
         }
 
         #dataNotFound {
@@ -40,23 +40,23 @@
         }
 
         #active {
-            margin-left: 1100px;
+            margin-left: 950px;
             color: #bf0e3a;
             margin-top: 50px;
         }
 
         #add {
-            background: #bf0e3a;
-            border-radius: 2px;
+            background: #e94870;
+            border-radius: 5px;
             border: 1px solid rgb(148, 35, 35);
             color: #fff;
             font-size: 15px;
             cursor: pointer;
-            top: -35px;
+            top: -20px;
             height: 30px;
             position: relative;
             width: 120px;
-            margin-left: 1150px;
+            margin-left: 950px;
         }
 
         #message {
@@ -65,6 +65,10 @@
             right: 10px;
             animation-duration: 1s;
             z-index: 1;
+        }
+
+        #mytable {
+            margin-left: -80px;
         }
     </Style>
     <section id="section">
@@ -87,8 +91,8 @@
                     </div>
                 @endif
             </div>
-            <h4 id="title1"> Employee detailes</h4>
-            <a href="/register"><input type="submit" value="Add Employee" id="add"></a>
+            <h3 id="title1"> Employee detailes</h3>
+            {{-- <a href="/register"><input type="submit" value="Add Employee" id="add"></a> --}}
             <form action="/usersearch" method="GET" autocomplete="off">
                 <div id="filterDiv1">
                     <div class="col-md-9">
@@ -108,8 +112,8 @@
                     </div>
                 </div>
             </form>
-            <table class="table table-bordered table-striped mt-1"
-                style="border: 1px solid lightgrey;width:1200px;margin-left:50px" id="myTable">
+            <table class="table table-bordered table-striped mt-1" style="border: 1px solid lightgrey;width:1200px;"
+                id="mytable">
                 <thead style="font-size: 17px;font-weight:600;" id="thead">
                     <th style="text-align:center;" id="title">S.no</th>
                     <th style="text-align:center;" id="title">Employee Id</th>
@@ -119,6 +123,7 @@
                     <th style="text-align:center;" id="title">Address</th>
                     <th style="text-align:center;" id="title">Mobile</th>
                     <th style="text-align:center;" id="title">Description</th>
+                    <th style="text-align:center;" id="title">Image</th>
                     <th style="text-align:center;" id="title">Action</th>
                 </thead>
                 @foreach ($users as $user)
@@ -137,7 +142,14 @@
                         </td>
                         <td style="text-align:center;" class="table_data">{{ $user->mobile }}
                         </td>
-                        <td style="text-align:center;" class="table_data">{{ $user->description }}
+                        <td style="text-align:center;" class="table_data">{{ $user->description }}</td>
+                        <td style="text-align:center;" class="table_data">
+                            @if ($user->image != null)
+                                <a>
+                                    <img src="{{ url('images/' . explode(',', $user->image)[0]) }}"
+                                        class="rounded-0 border border-secondary" width="50px" height="50px">
+                                </a>
+                            @endif
                         </td>
                         <td style="text-align:center;" class="table_data">
                             <a href="/edituser/{{ $user->id }}" class="btn btn-success btn-sm mt-1"><i

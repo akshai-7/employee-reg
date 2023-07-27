@@ -19,6 +19,7 @@ class RegisterController extends Controller
             'address' => 'required',
             'mobile' => 'required|numeric|digits:10',
             'description' => 'required',
+            'image' => 'required',
             'email' => 'required|email:rfc,dns',
             'password' => 'required|confirmed|min:8',
             'password_confirmation' => 'required'
@@ -31,9 +32,20 @@ class RegisterController extends Controller
         $register->address = $request['address'];
         $register->mobile = $request['mobile'];
         $register->description = $request['description'];
+        $data = $request->all();
+        $img = array();
+        for ($i = 0; $i < count($data['image']); $i++) {
+            $imageName = time() . '.' . $data['image'][$i]->getClientOriginalName();
+            $data['image'][$i]->move(public_path('images'), $imageName);
+            array_push($img, $imageName);
+        }
+        $data1 = array(
+            'image' =>  implode(",", $img),
+        );
+        $register->image = $data1['image'];
         $register->password = Hash::make($request['password']);
         $register->save();
         session()->flash('message', 'New Employee is Created');
-        return redirect('/user');
+        return redirect('/register');
     }
 }

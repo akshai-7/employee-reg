@@ -1,6 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
+    <style>
+        .btn1 {
+            color: white;
+            text-decoration-line: none;
+        }
+    </style>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -8,7 +14,7 @@
                     <div class="card-header">{{ __('Employee Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="/login">
+                        <form method="post" action="/store">
                             @csrf
                             <div class="row mb-3">
                                 <label for="email"
@@ -60,6 +66,9 @@
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}
+                                    </button>
+                                    <button type="submit" class="btn btn-primary ">
+                                        <a href="/register" class="btn1"> {{ __('Register') }}</a>
                                     </button>
 
                                     @if (Route::has('password.request'))

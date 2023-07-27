@@ -2,9 +2,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 ">
 
-                <form action="/update/{id}" method="Post">
+                <form action="/update/{id}" method="POST" class="mt-5" enctype="multipart/form-data">
                     @csrf
                     @foreach ($edit as $edits)
                         <div class="card">
@@ -143,6 +143,23 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="image"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="image" type="file"
+                                                class="form-control @error('image') is-invalid @enderror" name="image[]"
+                                                value="{{ $edits->image }}" autocomplete="image" multiple>
+
+                                            @if ($errors->has('image'))
+                                                <span class="help-block text-danger">
+                                                    <strong>{{ $errors->first('image') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
                                     </div>
 

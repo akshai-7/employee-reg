@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+
     public function userlist()
     {
         $users = User::paginate(5);
-        return view('/user', compact('users'));
+        return view('/user', ['users' => $users]);
     }
 
     public function edituser($id)
@@ -22,6 +24,7 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        // dd($request);
         $update = User::where('id', $request->id)->first();
         $update->firstname = $request['firstname'];
         $update->lastname = $request['lastname'];
@@ -30,8 +33,21 @@ class UserController extends Controller
         $update->address = $request['address'];
         $update->mobile = $request['mobile'];
         $update->description = $request['description'];
+        $data = $request->all();
+        $img = array();
+        for ($i = 0; $i < count($data['image']); $i++) {
+            $imageName = time() . '.' . $data['image'][$i]->getClientOriginalName();
+            $data['image'][$i]->move(public_path('images'), $imageName);
+            array_push($img, $imageName);
+        }
+        $data1 = array(
+            'image' =>  implode(",", $img),
+        );
+        $update->image = $data1['image'];
         $update->save();
+
         session()->flash('message', ' Updated Successfully');
+
         return redirect('/user');
     }
 
